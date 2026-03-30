@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PV4GS424');</script>
+  <!-- End Google Tag Manager -->
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>오늘 뭐 먹지? - 서울 맛집 추천</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5704617965715235"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css?v=1.1">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV4GS424"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+<header>
+  <p class="header-eyebrow">SEOUL MEAL FINDER</p>
+  <h1>오늘 뭐 먹지<span>?</span></h1>
+  <p class="header-sub">지역과 음식 종류를 선택하여 서울의 맛집을 찾아보세요.</p>
+</header>
+
+<main>
+  <!-- OPTIONS -->
+  <div class="options-grid">
+    <div class="option-group">
+      <label for="district-select">지역 (구)</label>
+      <select id="district-select" class="styled-select">
+        <option value="">구를 선택하세요</option>
+        <option value="종로구">종로구</option>
+        <option value="중구">중구</option>
+        <option value="용산구">용산구</option>
+        <option value="성동구">성동구</option>
+        <option value="광진구">광진구</option>
+        <option value="동대문구">동대문구</option>
+        <option value="중랑구">중랑구</option>
+        <option value="성북구">성북구</option>
+        <option value="강북구">강북구</option>
+        <option value="도봉구">도봉구</option>
+        <option value="노원구">노원구</option>
+        <option value="은평구">은평구</option>
+        <option value="서대문구">서대문구</option>
+        <option value="마포구">마포구</option>
+        <option value="양천구">양천구</option>
+        <option value="강서구">강서구</option>
+        <option value="구로구">구로구</option>
+        <option value="금천구">금천구</option>
+        <option value="영등포구">영등포구</option>
+        <option value="동작구">동작구</option>
+        <option value="관악구">관악구</option>
+        <option value="서초구">서초구</option>
+        <option value="강남구">강남구</option>
+        <option value="송파구">송파구</option>
+        <option value="강동구">강동구</option>
+      </select>
+    </div>
+    <div class="option-group">
+      <label for="cuisine-select">음식 종류</label>
+      <select id="cuisine-select" class="styled-select">
+        <option value="">종류를 선택하세요</option>
+        <option value="한식">한식</option>
+        <option value="중식">중식</option>
+        <option value="일식">일식</option>
+        <option value="양식">양식</option>
+        <option value="분식">분식</option>
+        <option value="기타">기타</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-wrap">
+    <div class="result-card" id="resultCard">
+      <div class="empty-msg" id="emptyMsg">
+        <strong>맛집 탐색 준비 완료</strong>
+        옵션을 선택하고 버튼을 눌러주세요.
+      </div>
+      <div class="result-content" id="resultContent" style="display:none;">
+        <div class="tag-row">
+          <span id="result-district" class="tag tag-district"></span>
+          <span id="result-cuisine" class="tag tag-cuisine"></span>
+        </div>
+        <div class="menu-name" id="restaurant-name"></div>
+        <div class="menu-desc" id="restaurant-address"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUTTONS -->
+  <button class="btn-spin" id="recommendBtn">
+    <span class="dice">🚀</span>맛집 탐색
+  </button>
+  <button class="btn-again" id="btnAgain" style="display:none;">
+    다른 맛집 탐색 →
+  </button>
+
+</main>
+
+<footer>
+  <p>© 2024 Seoul Meal Finder. All Rights Reserved.</p>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyD3mQbFox_cyGdB43uyeZQvcy1yGiPOhwc",
+    authDomain: "project1-db96f.firebaseapp.com",
+    projectId: "project1-db96f",
+    storageBucket: "project1-db96f.firebasestorage.app",
+    messagingSenderId: "525686339547",
+    appId: "1:525686339547:web:867bd086299da9316959fe",
+    measurementId: "G-5JPKCDKL2G"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</body>
+</html>
