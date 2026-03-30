@@ -87,7 +87,7 @@ function filterRestaurants(restaurants, district, cuisine) {
 
         // r.TRDSTATENM is no longer needed as we pre-filtered for active only
         const hasAddress = address && address.includes(district);
-        const isCuisineMatch = uptaeName && (cuisine === '기타' ? !['한식', '중식', '일식', '양식', '분식'].includes(uptaeName) : uptaeName.includes(cuisine));
+        const isCuisineMatch = uptaeName && uptaeName === cuisine;
 
         return hasAddress && isCuisineMatch;
     });
