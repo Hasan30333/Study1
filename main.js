@@ -52,7 +52,7 @@ async function handleRecommendation() {
 
 
 /**
- * 로컬 JSON 파일에서 음식점 데이터를 가져옵니다. (캐싱 적용)
+ * Firebase Realtime Database에서 음식점 데이터를 가져옵니다. (캐싱 적용)
  * @returns {Promise<Array>} 음식점 데이터 배열
  */
 async function fetchRestaurants() {
@@ -61,14 +61,15 @@ async function fetchRestaurants() {
         return allRestaurants;
     }
 
-    const response = await fetch('./restaurants.json');
+    const url = 'https://project1-db96f-default-rtdb.asia-southeast1.firebasedatabase.app/DATA.json';
+    const response = await fetch(url);
     if (!response.ok) {
-        throw new Error('restaurants.json 파일을 불러오는 데 실패했습니다.');
+        throw new Error('Firebase에서 데이터를 불러오는 데 실패했습니다.');
     }
     const data = await response.json();
 
     // 데이터 캐싱
-    allRestaurants = data.DATA || [];
+    allRestaurants = Array.isArray(data) ? data : [];
     return allRestaurants;
 }
 
